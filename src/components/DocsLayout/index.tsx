@@ -9,7 +9,7 @@ const DocLayout = ({ children }: { children: React.ReactNode }) => {
                 <div className="col-span-2 bg-white h-full">
                     <Sidebar />
                 </div>
-                <div className="col-span-10 bg-green-200 h-full">
+                <div className="col-span-10 bg-gray-700 text-gray-100 h-full py-6 px-6 md:px-12 lg:px-20 xl:px-32 ">
                     {children}
                 </div>
             </div>

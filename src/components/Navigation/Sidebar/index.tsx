@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 
 const generalNavs = [
     {
@@ -10,93 +10,116 @@ const generalNavs = [
 const componentList = [
     {
         name: 'Button',
-        path: '/documentation/button',
+        path: 'button',
     },
     {
         name: 'Drawer',
-        path: '/documentation/drawer',
+        path: 'drawer',
     },
     {
         name: 'Input',
-        path: '/documentation/input',
+        path: 'input',
     },
     {
         name: 'Password Input',
-        path: '/documentation/password-input',
+        path: 'password-input',
     },
     {
         name: 'Text Area',
-        path: '/documentation/text-area',
+        path: 'text-area',
     },
 ]
 const hooksList = [
     {
         name: 'useDarkSide',
-        path: '/documentation/use-dark-side',
+        path: 'use-dark-side',
     },
     {
         name: 'useDebounce',
-        path: '/documentation/use-debounce',
+        path: 'use-debounce',
     },
     {
         name: 'useLocalStorage',
-        path: '/documentation/use-local-storage',
+        path: 'use-local-storage',
     },
     {
         name: 'useScoll',
-        path: '/documentation/use-scroll',
+        path: 'use-scroll',
     },
     {
         name: 'useToggle',
-        path: '/documentation/use-toggle',
+        path: 'use-toggle',
     },
 ]
 const utilsNavs = [
     {
         name: 'Format with Suffix',
-        path: '/documentation/format-with-suffix',
+        path: 'format-with-suffix',
     },
     {
         name: 'If',
-        path: '/documentation/if',
+        path: 'if',
     },
     {
         name: 'Show',
-        path: '/documentation/Show',
+        path: 'Show',
     },
 ]
 
 const Sidebar: React.FC = () => {
+    const { slug } = useParams()
+
+    const navigate = useNavigate()
     return (
-        <div className="p-4">
+        <div className=" text-white bg-gray-800 h-full pt-6">
             <ul>
                 {generalNavs.map((nav) => (
-                    <li key={nav.name}>
+                    <li key={nav.name} className="px-4 py-2">
                         <Link to={nav.path}>{nav.name}</Link>
                     </li>
                 ))}
             </ul>
             <ul className="mt-4">
-                <li className="border-b mb-2 text-gray-500">Components</li>
+                <li className="border-b border-gray-700 mb-2 text-gray-500 mx-4 pb-1">
+                    Components
+                </li>
                 {componentList.map((component) => (
-                    <li key={component.name}>
-                        <Link to={component.path}>{component.name}</Link>
+                    <li
+                        onClick={() =>
+                            navigate(`/documentation/${component.path}`)
+                        }
+                        key={component.name}
+                        className={`px-4 py-2 cursor-pointer transition-all ease-in-out duration-300  ${slug === component.path ? 'bg-blue-500 text-white' : 'hover:bg-blue-500/20 hover:text-white'}`}
+                    >
+                        {component.name}
                     </li>
                 ))}
             </ul>
             <ul className="mt-4">
-                <li className="border-b mb-2 text-gray-500">Utilities</li>
+                <li className="border-b border-gray-700 mb-2 text-gray-500 mx-4 pb-1">
+                    Utilities
+                </li>
                 {utilsNavs.map((util) => (
-                    <li key={util.name}>
-                        <Link to={util.path}>{util.name}</Link>
+                    <li
+                        onClick={() => navigate(`/documentation/${util.path}`)}
+                        key={util.name}
+                        className={`px-4 py-2 cursor-pointer transition-all ease-in-out duration-300  ${slug === util.path ? 'bg-blue-500 text-white' : 'hover:bg-blue-500/20 hover:text-white'}`}
+                    >
+                        {util.name}
                     </li>
                 ))}
             </ul>
             <ul className="mt-4">
-                <li className="border-b mb-2 text-gray-500">Hooks</li>
+                <li className="border-b border-gray-700 mb-2 text-gray-500 mx-4 pb-1">
+                    Hooks
+                </li>
                 {hooksList.map((hook) => (
-                    <li key={hook.name}>
-                        <Link to={hook.path}>{hook.name}</Link>
+                    <li
+                        onClick={() => navigate(`/documentation/${hook.path}`)}
+                        key={hook.name}
+                        className={`px-4 py-2 cursor-pointer transition-all ease-in-out duration-300  ${slug === hook.path ? 'bg-blue-500 text-white' : 'hover:bg-blue-500/20 hover:text-white'}`}
+                    >
+                        {hook.name}
                     </li>
                 ))}
             </ul>

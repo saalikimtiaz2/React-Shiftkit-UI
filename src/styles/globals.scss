@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import './colors';
+@import './shiftkitstyles.scss';
+
+p {
+    @apply text-gray-400;
+}
+
+code {
+    @apply relative block p-1;
+
+    button {
+        @apply absolute right-2 top-2 text-lg text-gray-300 hover:text-gray-100;
+    }
+}
+.sc-gtLWhw,
+.hNrEzI {
+    @apply rounded-2xl;
+}
