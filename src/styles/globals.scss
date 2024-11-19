@@ -10,7 +10,7 @@ p {
 }
 
 code {
-    @apply relative block p-1;
+    @apply relative block px-6;
 
     button {
         @apply absolute right-2 top-2 text-lg text-gray-300 hover:text-gray-100;

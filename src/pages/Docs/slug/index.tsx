@@ -34,6 +34,13 @@ const Documentation: React.FC = () => {
             <H6 className="my-2">pnpm</H6>
             <CodeSnippit code="pnpm install react-shiftkit" />
 
+            <p className="mb-2 mt-8">
+                & then add css file to import basic styles.
+            </p>
+            <CodeSnippit
+                code={`import "react-shiftkit/lib/styles/global.css";`}
+            />
+
             <H3 className="mt-8">Basic example</H3>
             <p className="my-2">
                 To use {currItem.name} {currItem.type}, import:
@@ -41,6 +48,15 @@ const Documentation: React.FC = () => {
             <CodeSnippit
                 code={`import { ${currItem.name.replace(' ', '')} } from react-shiftkit;`}
             />
+            {Array.isArray(currItem.code) &&
+                currItem.code.map((code, index) => {
+                    return (
+                        <div key={index}>
+                            <p className="my-2">{code.title}</p>
+                            <CodeSnippit code={code.code} />
+                        </div>
+                    )
+                })}
         </DocLayout>
     )
 }
